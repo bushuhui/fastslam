@@ -32,3 +32,5 @@ Only test on Ubuntu 10.04 64-bit.
 -![alt text](http://blog.adv-ci.com/wp-content/uploads/2013/05/Screenshot-2D-SLAM-1.png "Screenshot 1")
 -![alt text](http://blog.adv-ci.com/wp-content/uploads/2013/05/Screenshot-2D-SLAM.png "Screenshot 2")
 
+## Project homepage:
+http://blog.adv-ci.com/fastslam-gui/
