@@ -1,0 +1,16 @@
+#ifndef UTILS_H
+#define UTILS_H
+
+#include <stdio.h>
+#include <stdlib.h>
+
+////////////////////////////////////////////////////////////////////////////////
+// time functions
+////////////////////////////////////////////////////////////////////////////////
+u_int64_t tm_get_millis(void);
+u_int64_t tm_get_ms(void);
+u_int64_t tm_get_us(void);
+
+void   tm_sleep(u_int32_t t);
+
+#endif // UTILS_H
