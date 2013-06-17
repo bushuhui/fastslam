@@ -16,7 +16,7 @@ The source is based on yglee source code (https://github.com/yglee/FastSLAM), an
 
 
 ## Usage:
-`./fastslam.e
+```./fastslam.e
     -m                  [s] input map file name
     -mode               [s] runing mode
         waypoints   : following given waypoints
@@ -25,7 +25,7 @@ The source is based on yglee source code (https://github.com/yglee/FastSLAM), an
         EKF1        : EKF SLAM 1
         FAST1       : FastSLAM 1
         FAST2       : FastSLAM 2
-    -h  (print usage)`
+    -h  (print usage)```
 
 
 examples:
