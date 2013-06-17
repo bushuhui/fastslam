@@ -1,0 +1,132 @@
+--------------- 2013-06-04 10:55:47 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 0 
+
+--------------- 2013-06-04 10:56:07 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 
+
+--------------- 2013-06-04 10:56:28 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 100 
+
+--------------- 2013-06-04 10:57:39 ---------------
+./fastslam.e -method FAST1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 100 
+
+--------------- 2013-06-04 10:57:54 ---------------
+./fastslam.e -method FAST1 -SWITCH_HEADING_KNOWN 0 -MAX_RANGE 100 
+
+--------------- 2013-06-04 10:58:13 ---------------
+./fastslam.e -method FAST1 -SWITCH_HEADING_KNOWN 0 -MAX_RANGE 30 
+
+--------------- 2013-06-04 11:00:06 ---------------
+./fastslam.e -method FAST1 -SWITCH_HEADING_KNOWN 0 -MAX_RANGE 100 
+
+--------------- 2013-06-04 11:00:14 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 100 
+
+--------------- 2013-06-04 11:00:34 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 0 -MAX_RANGE 100 
+
+--------------- 2013-06-04 11:01:25 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 0 -MAX_RANGE 30 
+
+--------------- 2013-06-04 11:28:39 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 30 
+
+--------------- 2013-06-04 11:37:50 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 0 -MAX_RANGE 30 
+
+--------------- 2013-06-04 11:38:06 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN q -MAX_RANGE 30 
+
+--------------- 2013-06-04 11:38:15 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 30 
+
+--------------- 2013-06-04 11:38:28 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 30 -V 10 
+
+--------------- 2013-06-04 11:38:35 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 30 -V 5 
+
+--------------- 2013-06-04 11:43:02 ---------------
+./fastslam.e 
+
+--------------- 2013-06-04 11:50:48 ---------------
+./fastslam.e 
+
+--------------- 2013-06-04 18:33:47 ---------------
+./fastslam.e 
+
+--------------- 2013-06-04 18:53:32 ---------------
+./fastslam.e 
+
+--------------- 2013-06-04 18:54:47 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 0 
+
+--------------- 2013-06-04 18:55:56 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 0 -SWITCH_ASSOCIATION_KNOWN 1 
+
+--------------- 2013-06-04 18:57:10 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.01 
+
+--------------- 2013-06-04 18:57:59 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.001 
+
+--------------- 2013-06-04 18:59:43 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.001 -draw_skip 10 
+
+--------------- 2013-06-04 19:00:14 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.001 -draw_skip 20 
+
+--------------- 2013-06-04 19:01:09 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0001 -draw_skip 20 
+
+--------------- 2013-06-04 20:00:31 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.01 -draw_skip 20 -m example_webmap.mat -method EKF1 
+
+--------------- 2013-06-04 20:02:15 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.01 -draw_skip 20 -m example_webmap.mat -method EKF1 
+
+--------------- 2013-06-04 20:03:02 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.01 -draw_skip 30 -m example_webmap.mat -method EKF1 
+
+--------------- 2013-06-04 20:10:25 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0001 -draw_skip 20 -m example_webmap.mat 
+
+--------------- 2013-06-04 20:10:48 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0000001 -draw_skip 20 -m example_webmap.mat 
+
+--------------- 2013-06-04 20:12:12 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0000001 -draw_skip 20 -m example_webmap.mat 
+
+--------------- 2013-06-04 20:26:12 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0000001 -draw_skip 20 -m example_webmap.mat 
+
+--------------- 2013-06-04 21:33:18 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0000001 -draw_skip 20 -m example_webmap.mat 
+
+--------------- 2013-06-05 10:20:34 ---------------
+./fastslam.e -m example_webmap.mat 
+
+--------------- 2013-06-05 11:29:20 ---------------
+./fastslam.e -m example_webmap.mat 
+
+--------------- 2013-06-05 11:32:03 ---------------
+./fastslam.e -m example_webmap.mat 
+
+--------------- 2013-06-05 11:33:25 ---------------
+./fastslam.e -m example_webmap.mat 
+
+--------------- 2013-06-05 11:33:40 ---------------
+./fastslam.e -m example_webmap.mat 
+
+--------------- 2013-06-05 11:36:26 ---------------
+./fastslam.e -m example_webmap.mat -MAX_RANGE 50 
+
+--------------- 2013-06-05 11:37:29 ---------------
+./fastslam.e -m example_webmap.mat -MAX_RANGE 50 -SWITCH_HEADING_KNOWN 0 
+
+--------------- 2013-06-05 11:39:31 ---------------
+./fastslam.e -m example_webmap.mat -MAX_RANGE 50 -SWITCH_HEADING_KNOWN 0 -sigmaV 1 -sigmaG 0.2 
+
+--------------- 2013-06-05 11:40:03 ---------------
+./fastslam.e -m example_webmap.mat -MAX_RANGE 50 -SWITCH_HEADING_KNOWN 0 -sigmaV 1 -sigmaG 0.2 -method 1 
+

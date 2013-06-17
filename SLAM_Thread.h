@@ -2,6 +2,7 @@
 #define SLAM_THREAD_H
 
 #include <stdio.h>
+#include <string>
 #include <QtGui>
 
 class SLAM_Thread : public QThread
@@ -9,15 +10,24 @@ class SLAM_Thread : public QThread
     Q_OBJECT
 
 public:
+    enum RunMode {
+        SLAM_WAYPOINT,                  // move along waypoints
+        SLAM_INTERACTIVE                // user interactive
+    };
+
     SLAM_Thread(QObject *parent = 0);
     ~SLAM_Thread();
 
     void stop(void);
 
-    void get_command(int *cmd);         // 1 - Forward
+    void getCommand(int *cmd);          // 1 - Forward
                                         // 2 - Backward
                                         // 3 - Turn Left
                                         // 4 - Turn Right
+
+    void setRunMode(RunMode mode);      // set run mode
+    void setMap(std::string &fname);        // set map filename
+
 
 signals:
     void replot();
@@ -29,9 +39,14 @@ public slots:
 protected:
     virtual void run() = 0;
 
-    int         isAlive;
-    int         command_id;
-    u_int64_t   command_time;
+    int         isAlive;                // is finished?
+
+    int         commandID;              // command id
+    u_int64_t   commandTime;            // command receive time-stamp
+
+    RunMode     runMode;                // running mode
+
+    std::string fnMap;                  // map filename
 };
 
 #endif // SLAM_THREAD_H

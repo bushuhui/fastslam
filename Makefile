@@ -20,7 +20,7 @@ QT_LIBS   = -lQtGui -lQtCore
 ################################################################################
 # Eigen3
 ################################################################################
-EIGEN3_CFLAGS = -I/usr/include/eigen3 
+EIGEN3_CFLAGS = -I./libs/eigen3 
 EIGEN3_LIBS   = 
 
 
@@ -34,13 +34,14 @@ LDFLAGS  = -lz -lpthread \
 MOC_CFLAGS = $(QT_CFLAGS)
 
 
+CXXFLAGS += -msse4
 #CXXFLAGS += -fopenmp
 #LDFLAGS += -lgomp
 
 #CXXFLAGS += $(FFMPEG_CFLAGS)
 
-#CXXFLAGS += -g -rdynamic
-CXXFLAGS += -O3 
+CXXFLAGS += -g -rdynamic
+#CXXFLAGS += -O3 
 
 ################################################################################
 
@@ -53,6 +54,7 @@ target_req = qcustomplot.o moc_qcustomplot.o \
     SLAM_Plot.o moc_SLAM_Plot.o \
     fastslam_1.o moc_fastslam_1.o \
     fastslam_2.o moc_fastslam_2.o \
+    ekfslam_1.o moc_ekfslam_1.o \
     SLAM_Thread.o moc_SLAM_Thread.o \
     utils.o	fastslam_core.o main.o
 
@@ -79,10 +81,14 @@ moc_fastslam_2.o : fastslam_2.h
 	$(MOC) fastslam_2.h -o moc_fastslam_2.cpp $(MOC_CFLAGS)
 	$(CXX) -c moc_fastslam_2.cpp -o moc_fastslam_2.o $(CXXFLAGS)
 
+moc_ekfslam_1.o : ekfslam_1.h
+	$(MOC) ekfslam_1.h -o moc_ekfslam_1.cpp $(MOC_CFLAGS)
+	$(CXX) -c moc_ekfslam_1.cpp -o moc_ekfslam_1.o $(CXXFLAGS)
+
 fastslam.e : $(target_req)
 	$(CXX) -o $@ $? $(LDFLAGS)
 
-test.e : test.o fastslam_core.o
+test.e : test.o fastslam_core.o utils.o
 	$(CXX) -o $@ $? $(LDFLAGS)
 
 %.e:%.cpp $(inc-all)

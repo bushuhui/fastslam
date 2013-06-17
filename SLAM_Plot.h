@@ -24,10 +24,13 @@ public:
 
     void setLandmarks(QVector<double> &arrX, QVector<double> &arrY);
     void setWaypoints(QVector<double> &arrX, QVector<double> &arrY);
+
     void setParticles(QVector<double> &arrX, QVector<double> &arrY);
     void setParticlesFea(QVector<double> &arrX, QVector<double> &arr);
 
     void setLaserLines(Eigen::MatrixXf &lnes);
+    void setCovEllipse(Eigen::MatrixXf &lnes, int idx);
+    void clearCovEllipse(void);
 
     void addPos(double x, double y);
     void addPosEst(double x, double y);
@@ -51,8 +54,15 @@ protected slots:
     void canvasReplot(void);
     void canvasShowMessage(QString msg);
 
+    void plotBegin(void);                   // slot for QCustomPlot begin plot
+    void plotEnd(void);                     // slot for QCustomPlot end plot
+
+    void covEllipseAdd(int n);              // slot for add new covariance ellipse
+
 signals:
     void commandSend(int cmd);
+    void addCovEllipse(int n);
+
 
 protected:
     void keyPressEvent(QKeyEvent *event);
@@ -90,6 +100,7 @@ private:
     QCPCurve            *curvCarEst;
 
     QVector<QCPGraph*>  arrLaserLines;                  // laser line graph
+    QVector<QCPCurve*>  arrCovLines;                    // cov ellipse graph
 
     QString             msgString1, msgString2;
 

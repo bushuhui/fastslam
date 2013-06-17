@@ -18,8 +18,8 @@ SLAM_Thread::SLAM_Thread(QObject *parent) : QThread(parent)
 {
     isAlive = 1;
 
-    command_id = 0;
-    command_time = 0;
+    commandID   = -1;
+    commandTime = 0;
 
     qRegisterMetaType<QString>("QString");
 
@@ -41,21 +41,32 @@ void SLAM_Thread::stop(void)
 
 void SLAM_Thread::commandRecv(int cmd)
 {
-    command_id = cmd;
-    command_time = tm_get_millis();
-    printf("command = %d\n", command_id);
+    commandID   = cmd;
+    commandTime = tm_get_millis();
 }
 
-void SLAM_Thread::get_command(int *cmd)
+void SLAM_Thread::getCommand(int *cmd)
 {
     u_int64_t       time_now, dt;
 
     time_now = tm_get_millis();
-    dt = time_now - command_time;
+    dt = time_now - commandTime;
 
     if( dt < 30 ) {
-        *cmd = command_id;
+        *cmd = commandID;
     } else {
         *cmd = -1;
     }
+}
+
+// set run mode
+void SLAM_Thread::setRunMode(RunMode mode)
+{
+    runMode = mode;
+}
+
+// set map filename
+void SLAM_Thread::setMap(std::string &fname)
+{
+    fnMap = fname;
 }

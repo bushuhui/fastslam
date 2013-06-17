@@ -1,0 +1,45 @@
+--------------- 2013-06-04 17:39:02 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -m example_loop902.mat 
+
+--------------- 2013-06-04 18:37:43 ---------------
+./fastslam.e -m example_loop902.mat 
+
+--------------- 2013-06-04 18:41:07 ---------------
+./fastslam.e -m example_loop902.mat -SWITCH_HEADING_KNOWN 0 
+
+--------------- 2013-06-04 19:01:31 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0001 -draw_skip 20 -m example_loop902.mat 
+
+--------------- 2013-06-04 19:02:44 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0001 -draw_skip 20 -m example_loop902.mat 
+
+--------------- 2013-06-04 19:24:08 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0001 -draw_skip 20 -m example_loop902.mat 
+
+--------------- 2013-06-04 19:49:50 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0001 -draw_skip 20 -m example_loop902.mat 
+
+--------------- 2013-06-04 20:06:43 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0001 -draw_skip 20 -m example_loop902.mat 
+
+--------------- 2013-06-04 20:06:56 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0001 -draw_skip 20 -m example_loop902.mat -mode interactive 
+
+--------------- 2013-06-04 20:09:45 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0001 -draw_skip 20 -m example_loop902.mat 
+
+--------------- 2013-06-05 11:42:36 ---------------
+./fastslam.e -m example_loop902.mat -MAX_RANGE 50 -SWITCH_HEADING_KNOWN 0 -sigmaV 1 -sigmaG 0.2 -method 1 
+
+--------------- 2013-06-05 11:42:46 ---------------
+./fastslam.e -m example_loop902.mat -MAX_RANGE 5 -SWITCH_HEADING_KNOWN 0 -sigmaV 1 -sigmaG 0.2 -method 1 
+
+--------------- 2013-06-05 11:43:25 ---------------
+./fastslam.e -m example_loop902.mat -MAX_RANGE 5 -SWITCH_HEADING_KNOWN 0 -sigmaV 1 -sigmaG 0.2 -method EKF1 
+
+--------------- 2013-06-05 11:43:54 ---------------
+./fastslam.e -m example_loop902.mat -MAX_RANGE 5 -SWITCH_HEADING_KNOWN 1 -sigmaV 1 -sigmaG 0.2 -method EKF1 
+
+--------------- 2013-06-05 11:47:26 ---------------
+./fastslam.e -m example_loop902.mat -MAX_RANGE 5 -SWITCH_HEADING_KNOWN 1 -sigmaV 1 -sigmaG 0.2 -method EKF1 
+

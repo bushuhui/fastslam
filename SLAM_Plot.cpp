@@ -15,6 +15,9 @@ SlamPlot::SlamPlot(QWidget *parent) :
     muxData = new QMutex(QMutex::NonRecursive);
 
     customPlot = new QCustomPlot(this);
+    connect(customPlot, SIGNAL(beforeReplot()),     this, SLOT(plotBegin()));
+    connect(customPlot, SIGNAL(afterReplot()),      this, SLOT(plotEnd()));
+    connect(this,       SIGNAL(addCovEllipse(int)), this, SLOT(covEllipseAdd(int)));
 
     setCentralWidget(customPlot);
 
@@ -45,24 +48,16 @@ void SlamPlot::keyPressEvent(QKeyEvent *event)
     int cmd = -1;
 
     key  = event->key();
-    key2 = key & 0xFFFFFF;
 
-    printf("key = %d %x (%d) \n", key, key, key2);
+    //key2 = key & 0xFFFFFF;
+    //printf("key = %d %x (%d) \n", key, key, key2);
 
-    if( key > 0x1000000 ) {
-        if( key2 == 19 ) {
-            cmd = 1;
-        } else if ( key2 == 21 ) {
-            cmd = 2;
-        } else if ( key2 == 18 ) {
-            cmd = 3;
-        } else if ( key2 == 20 ) {
-            cmd = 4;
-        }
+    if( key == Qt::Key_Up )     cmd = 1;
+    if( key == Qt::Key_Down )   cmd = 2;
+    if( key == Qt::Key_Left )   cmd = 3;
+    if( key == Qt::Key_Right )  cmd = 4;
 
-        if( cmd > 0 ) emit commandSend(cmd);
-    } else {
-    }
+    if( cmd > 0 ) emit commandSend(cmd);
 }
 
 void SlamPlot::mousePressEvent(QMouseEvent *event)
@@ -159,15 +154,28 @@ void SlamPlot::canvsMousePressEvent(QMouseEvent *event)
 #endif
 }
 
+
 void SlamPlot::canvasReplot(void)
 {
     plot();    
 }
+void SlamPlot::plotBegin(void)
+{
+    muxData->lock();
+}
+
+void SlamPlot::plotEnd(void)
+{
+    muxData->unlock();
+}
+
 
 void SlamPlot::canvasShowMessage(QString msg)
 {
     showMessage(msg);
 }
+
+
 
 void SlamPlot::setupInitData(void)
 {
@@ -315,6 +323,16 @@ void SlamPlot::setupCanvas(void)
         arrLaserLines.push_back(gLaserLine);
     }
 
+    // Cov ellipse lines
+    for(int i=0; i<25; i++) {
+        QCPCurve *gCovEllipse = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
+        customPlot->addPlottable(gCovEllipse);
+        gCovEllipse->setPen(QColor(128, 0, 128));
+        gCovEllipse->setLineStyle(QCPCurve::lsLine);
+        gCovEllipse->setName("Covanice ellipse");
+
+        arrCovLines.push_back(gCovEllipse);
+    }
 
     // set ranges appropriate to show data:
     customPlot->xAxis->setRange(-20, 20);
@@ -443,6 +461,81 @@ void SlamPlot::setLaserLines(Eigen::MatrixXf &lnes)
     muxData->unlock();
 }
 
+// slot for add new covariance ellipse
+void SlamPlot::covEllipseAdd(int n)
+{
+    muxData->lock();
+
+    int                 i;
+    int                 nGraph;
+
+    nGraph = arrCovLines.size();
+
+    // add new graph
+    if( n > nGraph ) {
+        for(i=0; i<n-nGraph+1; i++) {
+            QCPCurve *gCovEllipse = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
+            customPlot->addPlottable(gCovEllipse);
+            gCovEllipse->setPen(QColor(128, 0, 128));
+            gCovEllipse->setLineStyle(QCPCurve::lsLine);
+            gCovEllipse->setName("Covanice ellipse");
+
+            arrCovLines.push_back(gCovEllipse);
+        }
+    }
+
+    muxData->unlock();
+}
+
+
+void SlamPlot::setCovEllipse(Eigen::MatrixXf &lnes, int idx)
+{
+    muxData->lock();
+
+    int                 i, nSeg;
+    int                 nGraph;
+
+    QVector<double>     arrX, arrY;
+
+    nSeg   = lnes.cols();
+    nGraph = arrCovLines.size();
+
+    if( idx >= nGraph ) {
+        muxData->unlock();
+        emit addCovEllipse(nGraph*2);
+        return;
+    }
+
+    // set covanice ellipse line data
+    arrX.clear();
+    arrY.clear();
+
+    for(i=0; i<nSeg; i++) {
+        arrX.push_back(lnes(0, i));
+        arrY.push_back(lnes(1, i));
+
+        arrCovLines[idx]->setData(arrX, arrY);
+    }
+
+    muxData->unlock();
+}
+
+void SlamPlot::clearCovEllipse(void)
+{
+    muxData->lock();
+
+    int                 i, nGraph;
+    QVector<double>     arrX, arrY;
+
+    nGraph = arrCovLines.size();
+
+    arrX.clear();
+    arrY.clear();
+    for(i=0; i<nGraph; i++)
+        arrCovLines[i]->setData(arrX, arrY);
+
+    muxData->unlock();
+}
 
 void SlamPlot::addPos(double x, double y)
 {
@@ -581,11 +674,7 @@ void SlamPlot::clear(void)
 
 void SlamPlot::plot(void)
 {
-    muxData->lock();
-
     customPlot->replot();
-
-    muxData->unlock();
 }
 
 void SlamPlot::drawCar(int idx)

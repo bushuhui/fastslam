@@ -10,14 +10,22 @@ The source is based on yglee source code (https://github.com/yglee/FastSLAM), an
 * Qt4 (sudo apt-get install libqt4-core libqt4-dev)
 * QCustomPlot (included, webpage: http://www.workslikeclockwork.com/) 
 
+
 ## Compile:
 `make`
 
 
 ## Usage:
-`./fastslam.e 1` (FastSLAM 1)
+`./fastslam.e [1/2] [interactive/waypoints] [filename]`
+* the first parameter can be "1" (FastSLAM 1) or "2" (FastSLAM 2)
+* the second parameter can be "interactive" (user contol the movement, up,down,right,left arrow keys), "waypoints" (default, following the given waypoints)
+* the third parameter specific map file name.
 
-`./fastslam.e 2` (FastSLAM 2)
+examples:
+
+`./fastslam.e 1 interactive` (FastSLAM 1, user interactive)
+
+`./fastslam.e 2 waypoints example_webmap.mat` (FastSLAM 2, following waypoints, map is "example_webmap.mat")
 
 
 ## Plateform:
@@ -27,10 +35,12 @@ Only test on Ubuntu 10.04 64-bit.
 ## Issues:
 * Low performance (Even worse than Matlab version)
 * Crash occurs when zooming or moving plot (occasionally)
-    
+
+
 ## Screenshot:
 -![alt text](http://blog.adv-ci.com/wp-content/uploads/2013/05/Screenshot-2D-SLAM-1.png "Screenshot 1")
 -![alt text](http://blog.adv-ci.com/wp-content/uploads/2013/05/Screenshot-2D-SLAM.png "Screenshot 2")
+
 
 ## Project homepage:
 http://blog.adv-ci.com/fastslam-gui/

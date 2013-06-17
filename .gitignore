@@ -12,5 +12,9 @@
 *.la
 *.a
 
+# exe
+*.e
+
 # QT Creator file
 *.user
+moc_*

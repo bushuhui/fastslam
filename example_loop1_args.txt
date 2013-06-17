@@ -1,0 +1,36 @@
+--------------- 2013-06-04 14:58:39 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 30 -m example_loop1.mat 
+
+--------------- 2013-06-04 14:59:15 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 30 -m example_loop1.mat 
+
+--------------- 2013-06-04 14:59:27 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 30 -m example_loop1.mat 
+
+--------------- 2013-06-04 14:59:38 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 30 -m example_loop1.mat 
+
+--------------- 2013-06-04 15:00:14 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 30 -m example_loop1.mat 
+
+--------------- 2013-06-04 15:00:38 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 30 -m example_loop1.mat 
+
+--------------- 2013-06-04 15:00:44 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -MAX_RANGE 30 -m example_loop1.mat 
+
+--------------- 2013-06-04 15:01:11 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 0 -MAX_RANGE 10 -m example_loop1.mat 
+
+--------------- 2013-06-04 15:02:05 ---------------
+./fastslam.e -method EKF1 -SWITCH_HEADING_KNOWN 1 -m example_loop1.mat 
+
+--------------- 2013-06-04 19:03:18 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.0001 -draw_skip 20 -m example_loop1.mat 
+
+--------------- 2013-06-04 19:59:43 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.01 -draw_skip 20 -m example_loop1.mat -method EKF1 
+
+--------------- 2013-06-04 20:04:16 ---------------
+./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.01 -draw_skip 20 -m example_loop1.mat -method EKF1 
+
