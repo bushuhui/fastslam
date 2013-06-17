@@ -16,16 +16,26 @@ The source is based on yglee source code (https://github.com/yglee/FastSLAM), an
 
 
 ## Usage:
-`./fastslam.e [1/2] [interactive/waypoints] [filename]`
-* the first parameter can be "1" (FastSLAM 1) or "2" (FastSLAM 2)
-* the second parameter can be "interactive" (user contol the movement, up,down,right,left arrow keys), "waypoints" (default, following the given waypoints)
-* the third parameter specific map file name.
+./fastslam.e
+    -m                  [s] input map file name
+    -mode               [s] runing mode
+        waypoints   : following given waypoints
+        interactive : use keyboard to control movement
+    -method             [s] SLAM method
+        EKF1        : EKF SLAM 1
+        FAST1       : FastSLAM 1
+        FAST2       : FastSLAM 2
+    -h  (print usage)
+
 
 examples:
 
-`./fastslam.e 1 interactive` (FastSLAM 1, user interactive)
+`./fastslam.e -method FAST1 -mode interactive` (FastSLAM 1, user interactive)
 
-`./fastslam.e 2 waypoints example_webmap.mat` (FastSLAM 2, following waypoints, map is "example_webmap.mat")
+`./fastslam.e -method FAST2 -mode waypoints -m example_webmap.mat` (FastSLAM 2, following waypoints, map is "example_webmap.mat")
+
+`./fastslam.e -method EKF1 -mode waypoints -m example_loop1.mat` (EKF SLAM, following waypoints, map is "example_loop1.mat")
+
 
 
 ## Plateform:
