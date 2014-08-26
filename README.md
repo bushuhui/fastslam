@@ -55,4 +55,4 @@ Only test on Ubuntu 10.04 64-bit.
 
 
 ## Project homepage:
-http://blog.adv-ci.com/fastslam-gui/
+http://www.adv-ci.com/blog/project/fastslam-gui/
