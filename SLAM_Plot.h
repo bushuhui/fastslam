@@ -4,6 +4,7 @@
 #include <QtCore>
 #include <QtGui>
 #include <QMainWindow>
+#include <QStatusBar>
 #include <QTimer>
 
 #include <Eigen/Dense>
