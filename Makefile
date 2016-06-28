@@ -39,8 +39,6 @@ CXXFLAGS   += -msse4
 #CXXFLAGS += -fopenmp
 #LDFLAGS += -lgomp
 
-#CXXFLAGS += $(FFMPEG_CFLAGS)
-
 CXXFLAGS   += -g -rdynamic
 #CXXFLAGS += -O3 
 

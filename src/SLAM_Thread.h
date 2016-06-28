@@ -44,7 +44,6 @@ protected:
 
     int         commandID;              // command id
     uint64_t    commandTime;            // command receive time-stamp
-
     RunMode     runMode;                // running mode
 
     std::string fnMap;                  // map filename

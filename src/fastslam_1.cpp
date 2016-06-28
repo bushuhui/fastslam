@@ -52,7 +52,7 @@ vector<Particle> FastSLAM1_Thread::sim(MatrixXf &lm, MatrixXf &wp)
     double      time_all;
 
     int         m, n;
-    int         i, j;
+    int 	i;
 
     QString             msgAll;
 
@@ -125,13 +125,13 @@ vector<Particle> FastSLAM1_Thread::sim(MatrixXf &lm, MatrixXf &wp)
 
     //vector of particles (their count will change)
     vector<Particle> particles(g_conf->NPARTICLES);
-    for (int i=0; i<particles.size(); i++) {
+    for (unsigned long i=0; i<particles.size(); i++) {
         particles[i] = Particle();
     }
 
     //initialize particle weights as uniform
     float uniformw = 1.0/(float) g_conf->NPARTICLES;
-    for (unsigned int p = 0; p < g_conf->NPARTICLES; p++) {
+    for (int p = 0; p < g_conf->NPARTICLES; p++) {
         particles[p].setW(uniformw);
     }
 
@@ -239,7 +239,7 @@ vector<Particle> FastSLAM1_Thread::sim(MatrixXf &lm, MatrixXf &wp)
         for (i=0; i< g_conf->NPARTICLES; i++) {
             predict(particles[i], Vn, Gn, Qe, g_conf->WHEELBASE, dt, g_conf->SWITCH_PREDICT_NOISE);
             if (g_conf->SWITCH_HEADING_KNOWN) {
-                for (int j=0; j< particles[i].xf().size(); j++) {
+                for (unsigned long j=0; j< particles[i].xf().size(); j++) {
                     VectorXf xf_j = particles[i].xf()[j];
                     xf_j[2] = xtrue[2];
                     particles[i].setXfi(j,xf_j);
@@ -262,7 +262,7 @@ vector<Particle> FastSLAM1_Thread::sim(MatrixXf &lm, MatrixXf &wp)
             plines = make_laser_lines(z, xtrue);
 
             //Compute (known) data associations
-            int Nf = particles[0].xf().size();
+            unsigned long Nf = particles[0].xf().size();
             vector<int>         idf;
             vector<VectorXf>    zf;
             vector<VectorXf>    zn;
@@ -326,7 +326,7 @@ vector<Particle> FastSLAM1_Thread::sim(MatrixXf &lm, MatrixXf &wp)
         arrParticlesFea_x.clear();
         arrParticlesFea_y.clear();
         for(i=0; i<g_conf->NPARTICLES; i++) {
-            for(j=0; j<particles[i].xf().size(); j++ ) {
+            for(unsigned long j=0; j<particles[i].xf().size(); j++ ) {
                 arrParticlesFea_x.push_back( particles[i].xf()[j](0) );
                 arrParticlesFea_y.push_back( particles[i].xf()[j](1) );
             }
@@ -400,7 +400,7 @@ float FastSLAM1_Thread::compute_weight(Particle &particle, vector<VectorXf> &z, 
 
     vector<VectorXf> v;
 
-    for (int j =0; j<z.size(); j++) {
+    for (unsigned long j =0; j<z.size(); j++) {
         VectorXf v_j = z[j] - zp[j];
         v_j[1] = pi_to_pi(v_j[1]);
         v.push_back(v_j);
@@ -410,7 +410,7 @@ float FastSLAM1_Thread::compute_weight(Particle &particle, vector<VectorXf> &z, 
 
     MatrixXf S;
     float den, num;
-    for (int i=0; i<z.size(); i++) {
+    for (unsigned long i=0; i<z.size(); i++) {
         S = Sf[i];
         den = 2*M_PI*sqrt(S.determinant());
         num = std::exp(-0.5 * v[i].transpose() * S.inverse() * v[i]);

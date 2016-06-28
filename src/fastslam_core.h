@@ -36,9 +36,9 @@ public:
 	void setXv(VectorXf &xv);
 	void setPv(MatrixXf &Pv);
 	void setXf(vector<VectorXf> &xf);
-	void setXfi(int i, VectorXf &vec);
+	void setXfi(unsigned long i, VectorXf &vec);
 	void setPf(vector<MatrixXf> &Pf);
-	void setPfi(int i, MatrixXf &m);
+	void setPfi(unsigned long i, MatrixXf &m);
 	void setDa(float* da);
 	
 private:
@@ -181,7 +181,7 @@ MatrixXf line_plot_conversion(MatrixXf &lnes);
 
 void make_covariance_ellipse(MatrixXf &x, MatrixXf &P, MatrixXf &lines);
 
-void stratified_random(int N, vector<float> &di);
+void stratified_random(unsigned long N, vector<float> &di);
 double unifRand();
 
 VectorXf multivariate_gauss(VectorXf &x, MatrixXf &P, int n);

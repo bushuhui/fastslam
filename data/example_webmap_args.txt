@@ -130,3 +130,159 @@
 --------------- 2013-06-05 11:40:03 ---------------
 ./fastslam.e -m example_webmap.mat -MAX_RANGE 50 -SWITCH_HEADING_KNOWN 0 -sigmaV 1 -sigmaG 0.2 -method 1 
 
+--------------- 2016-06-27 19:20:38 ---------------
+./fastslam 
+
+--------------- 2016-06-27 19:24:06 ---------------
+./fastslam -method FAST2 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 19:24:54 ---------------
+./fastslam -method FAST2 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 19:30:00 ---------------
+./fastslam 
+
+--------------- 2016-06-27 19:30:05 ---------------
+./fastslam help 
+
+--------------- 2016-06-27 19:37:29 ---------------
+./fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 19:47:10 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 19:49:44 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 19:50:20 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 19:51:45 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 19:52:22 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 20:36:21 ---------------
+./fastslam 
+
+--------------- 2016-06-27 20:36:55 ---------------
+./fastslam -method EKF1 
+
+--------------- 2016-06-27 20:48:22 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 20:50:13 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 20:51:55 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 20:57:11 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 21:53:19 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 21:54:37 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 21:55:42 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 21:56:11 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 21:57:31 ---------------
+/usr/home/ota/workspace/fastslam/fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 22:06:53 ---------------
+./fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 22:07:56 ---------------
+./fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 22:08:12 ---------------
+./fastslam -method FAST1 -mode interactive 
+
+--------------- 2016-06-27 22:08:26 ---------------
+./fastslam -method FAST1 -mode interactive 
+
+--------------- 2016-06-27 22:08:34 ---------------
+./fastslam -method FAST1 -mode interactive 
+
+--------------- 2016-06-27 22:08:43 ---------------
+./fastslam -method FAST1 -mode interactive 
+
+--------------- 2016-06-27 22:08:52 ---------------
+./fastslam -method FAST2 -mode interactive 
+
+--------------- 2016-06-27 22:15:09 ---------------
+./fastslam -m example_webmap.mat -MAX_RANGE 50 -SWITCH_HEADING_KNOWN 0 -sigmaV 1 -sigmaG 0.2 -method 1 
+
+--------------- 2016-06-27 22:21:45 ---------------
+./fastslam 1 
+
+--------------- 2016-06-27 22:22:04 ---------------
+./fastslam 2 
+
+--------------- 2016-06-27 22:22:32 ---------------
+./fastslam -method EKF1 
+
+--------------- 2016-06-27 22:22:38 ---------------
+./fastslam -method EKF2 
+
+--------------- 2016-06-27 22:22:52 ---------------
+./fastslam -method FAST1 
+
+--------------- 2016-06-27 22:22:56 ---------------
+./fastslam -method FAST2 
+
+--------------- 2016-06-27 22:23:11 ---------------
+./fastslam -m example_webmap.mat -MAX_RANGE 50 -SWITCH_HEADING_KNOWN 0 -sigmaV 1 -sigmaG 0.2 -method 1 
+
+--------------- 2016-06-27 22:24:22 ---------------
+./fastslam -m example_webmap.mat -MAX_RANG -method 1 
+
+--------------- 2016-06-27 22:24:48 ---------------
+./fastslam -m example_webmap.mat -method 1 
+
+--------------- 2016-06-27 22:26:05 ---------------
+./fastslam -m example_webmap.mat -MAX_RANG -method 1 
+
+--------------- 2016-06-27 22:26:18 ---------------
+./fastslam -m example_webmap.mat -MAX_RANGE 50 -SWITCH_HEADING_KNOWN 0 -sigmaV 1 -sigmaG 0.2 -method 1 
+
+--------------- 2016-06-27 22:30:16 ---------------
+./fastslam -method FAST2 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 22:33:46 ---------------
+./fastslam -method FAST1 -mode waypoints -m example_webmap.mat 
+
+--------------- 2016-06-27 22:34:54 ---------------
+./fastslam -m example_webmap.mat -MAX_RANGE 50 -SWITCH_HEADING_KNOWN 0 -sigmaV 1 -sigmaG 0.2 -method 1 
+
+--------------- 2016-06-27 22:35:22 ---------------
+./fastslam -m example_webmap.mat -MAX_RANGE 50 -SWITCH_HEADING_KNOWN 0 -sigmaV 1 -sigmaG 0.2 -method 1 
+
+--------------- 2016-06-28 11:20:12 ---------------
+./fastslam.e 
+
+--------------- 2016-06-28 11:20:32 ---------------
+./fastslam.e -method FAST1 -mode interactive 
+
+--------------- 2016-06-28 11:20:41 ---------------
+./fastslam.e -method FAST1 
+
+--------------- 2016-06-28 11:20:46 ---------------
+./fastslam.e -method FAST2 
+
+--------------- 2016-06-28 11:21:26 ---------------
+./fastslam.e -method EKF 
+
+--------------- 2016-06-28 11:21:30 ---------------
+./fastslam.e -method EKF1 
+
+--------------- 2016-06-28 11:21:34 ---------------
+./fastslam.e -method FAST1 
+

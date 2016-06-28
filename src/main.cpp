@@ -32,7 +32,7 @@ SLAM_Conf   *g_conf;
 ////////////////////////////////////////////////////////////////////////////////
 /// print usage help
 ////////////////////////////////////////////////////////////////////////////////
-int print_usage(int argc, char *argv[])
+void print_usage(char *argv[])
 {
     printf("%s\n", argv[0]);
     printf("    -m                  [s] input map file name\n");
@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
             map_fname = argv[i+1];
         }
         if( strcmp(argv[i], "-h") == 0 ) {
-            print_usage(argc, argv);
+            print_usage(argv);
             return 0;
         }
     }

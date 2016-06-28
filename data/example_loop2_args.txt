@@ -70,3 +70,42 @@
 --------------- 2013-06-04 20:05:03 ---------------
 ./fastslam.e -SWITCH_HEADING_KNOWN 1 -SWITCH_ASSOCIATION_KNOWN 1 -sigmaT 0.01 -draw_skip 20 -m example_loop2.mat -method EKF1 
 
+--------------- 2016-06-27 19:27:30 ---------------
+./fastslam -method EKF1 -mode waypoints -m example_loop2.mat 
+
+--------------- 2016-06-27 19:28:49 ---------------
+./fastslam -method FAST2 -mode waypoints -m example_loop2.mat 
+
+--------------- 2016-06-27 19:35:32 ---------------
+./fastslam -method FAST2 -mode waypoints -m example_loop2.mat 
+
+--------------- 2016-06-27 19:36:22 ---------------
+./fastslam -method FAST1 -mode waypoints -m example_loop2.mat 
+
+--------------- 2016-06-27 19:38:10 ---------------
+./fastslam -method FAST2 -mode waypoints -m example_loop2.mat 
+
+--------------- 2016-06-27 19:38:21 ---------------
+./fastslam -method EKF -mode waypoints -m example_loop2.mat 
+
+--------------- 2016-06-27 19:38:39 ---------------
+./fastslam -method EKF1 -mode waypoints -m example_loop2.mat 
+
+--------------- 2016-06-27 19:38:52 ---------------
+./fastslam -method FAST1 -mode waypoints -m example_loop2.mat 
+
+--------------- 2016-06-27 19:39:31 ---------------
+./fastslam -method FAST2 -mode waypoints -m example_loop2.mat 
+
+--------------- 2016-06-27 19:40:24 ---------------
+./fastslam -method EKF1 -mode waypoints -m example_loop2.mat 
+
+--------------- 2016-06-27 19:41:24 ---------------
+./fastslam -method FAST2 -mode waypoints -m example_loop2.mat 
+
+--------------- 2016-06-27 19:45:45 ---------------
+./fastslam -method FAST1 -mode waypoints -m example_loop2.mat 
+
+--------------- 2016-06-27 19:58:17 ---------------
+./fastslam -method FAST1 -mode waypoints -m example_loop2.mat 
+

@@ -51,7 +51,7 @@ vector<Particle> FastSLAM2_Thread::sim(MatrixXf &lm, MatrixXf &wp)
     double      time_all;
 
     int         m, n;
-    int         i, j;
+    int         i;
 
     QString             msgAll;
 
@@ -127,13 +127,13 @@ vector<Particle> FastSLAM2_Thread::sim(MatrixXf &lm, MatrixXf &wp)
 
     //vector of particles (their count will change)
     vector<Particle> particles(g_conf->NPARTICLES);
-    for (int i=0; i<particles.size(); i++) {
+    for (unsigned long i=0; i<particles.size(); i++) {
         particles[i] = Particle();
     }
 
     //initialize particle weights as uniform
     float uniformw = 1.0/(float)g_conf->NPARTICLES;
-    for (unsigned int p = 0; p <g_conf->NPARTICLES; p++) {
+    for (int p = 0; p <g_conf->NPARTICLES; p++) {
         particles[p].setW(uniformw);
     }
 
@@ -339,7 +339,7 @@ vector<Particle> FastSLAM2_Thread::sim(MatrixXf &lm, MatrixXf &wp)
         arrParticlesFea_x.clear();
         arrParticlesFea_y.clear();
         for(i=0; i<g_conf->NPARTICLES; i++) {
-            for(j=0; j<particles[i].xf().size(); j++ ) {
+            for(unsigned long j=0; j<particles[i].xf().size(); j++ ) {
                 arrParticlesFea_x.push_back( particles[i].xf()[j](0) );
                 arrParticlesFea_y.push_back( particles[i].xf()[j](1) );
             }
@@ -431,25 +431,25 @@ void FastSLAM2_Thread::observe_heading(Particle &particle, float phi, int usehea
     }
 
     float sigmaPhi = 0.01*M_PI/180.0;
-    cout<<"sigmaPhi "<<sigmaPhi<<endl;
+    // cout<<"sigmaPhi "<<sigmaPhi<<endl;
     VectorXf xv = particle.xv();
-    cout<<"xv"<<endl;
-    cout<<xv<<endl;
+    // cout<<"xv"<<endl;
+    // cout<<xv<<endl;
     MatrixXf Pv = particle.Pv();
-    cout<<"Pv"<<endl;
-    cout<<Pv<<endl;
+    // cout<<"Pv"<<endl;
+    // cout<<Pv<<endl;
 
     MatrixXf H(1,3);
     H<<0,0,1;
 
     float v = pi_to_pi(phi-xv(2));
-    cout<<"v"<<endl;
-    cout<<v<<endl;
+    // cout<<"v"<<endl;
+    // cout<<v<<endl;
     KF_joseph_update(xv,Pv,v,pow(sigmaPhi,2),H);
-    cout<<"KF_Joseph = xv"<<endl;
-    cout<<xv<<endl;
-    cout<<"KF_Joseph = Pv"<<endl;
-    cout<<Pv<<endl;
+    // cout<<"KF_Joseph = xv"<<endl;
+    // cout<<xv<<endl;
+    // cout<<"KF_Joseph = Pv"<<endl;
+    // cout<<Pv<<endl;
 
     particle.setXv(xv);
     particle.setPv(Pv);
@@ -511,7 +511,7 @@ float FastSLAM2_Thread::compute_weight(Particle &particle, vector<VectorXf> &z, 
 
     vector<VectorXf> v;
 
-    for (int j =0; j<z.size(); j++) {
+    for (unsigned long j =0; j<z.size(); j++) {
         VectorXf v_j = z[j] - zp[j];
         v_j[1] = pi_to_pi(v_j[1]);
         v.push_back(v_j);
@@ -521,7 +521,7 @@ float FastSLAM2_Thread::compute_weight(Particle &particle, vector<VectorXf> &z, 
 
     MatrixXf S;
     float den, num;
-    for (int i=0; i<z.size(); i++) {
+    for (unsigned long i=0; i<z.size(); i++) {
         S = Sf[i];
         den = 2*M_PI*sqrt(S.determinant());
         num = std::exp(-0.5 * v[i].transpose() * S.inverse() * v[i]);
@@ -554,7 +554,7 @@ void FastSLAM2_Thread::sample_proposal(Particle &particle, vector<VectorXf> &z, 
     VectorXf vi(z[0].rows());
 
     //process each feature, incrementally refine proposal distribution
-    int i;
+    unsigned long i;
 
     for (i =0; i<idf.size(); i++) {
         vector<int>     j;

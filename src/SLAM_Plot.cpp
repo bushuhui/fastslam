@@ -44,13 +44,10 @@ SlamPlot::~SlamPlot()
 
 void SlamPlot::keyPressEvent(QKeyEvent *event)
 {
-    int key, key2;
+    int key;
     int cmd = -1;
 
     key  = event->key();
-
-    key2 = key & 0xFFFFFF;
-    printf("key = %d %x (%d) \n", key, key, key2);
 
     if( key == Qt::Key_Up )     cmd = 1;
     if( key == Qt::Key_Down )   cmd = 2;
