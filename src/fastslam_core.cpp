@@ -54,11 +54,12 @@ void compute_steering(VectorXf &x, MatrixXf &wp, int &iwp, float minD,
         %   x - true position
         %   wp - waypoints
         %   iwp - index to current waypoint
-        %   minD - minimum distance to current waypoint before switching to next
-        %   G - current steering angle
+        %   minD - minimum distance to current waypoint before switching to next        
         %   rateG - max steering rate (rad/s)
         %   maxG - max steering angle (rad)
         %   dt - timestep
+        % Output:
+        %   G - current steering angle
     */
 
     //determine if current waypoint reached
@@ -106,7 +107,7 @@ void compute_steering(VectorXf &x, MatrixXf &wp, int &iwp, float minD,
 
 //z is range and bearing of visible landmarks
 // find associations (zf) and new features (zn)
-void data_associate_known(vector<VectorXf> &z, vector<int> &idz, VectorXf &table, int Nf, \
+void data_associate_known(vector<VectorXf> &z, vector<int> &idz, VectorXf &table, int Nf,
                           vector<VectorXf> &zf, vector<int> &idf, vector<VectorXf> &zn)
 {
     idf.clear();
@@ -137,9 +138,12 @@ void data_associate_known(vector<VectorXf> &z, vector<int> &idz, VectorXf &table
 
 
 //z is the list of measurements conditioned on the particle.
-void feature_update(Particle &particle, vector<VectorXf> &z, vector<int> &idf, MatrixXf &R)
+void feature_update(Particle &particle, vector<VectorXf> &z,
+                    vector<int> &idf, MatrixXf &R)
 {
-    //Having selected a new pose from the proposal distribution, this pose is assumed perfect and each feature update maybe computed independently and without pose uncertainty
+    //Having selected a new pose from the proposal distribution,
+    //  this pose is assumed perfect and each feature update maybe
+    //  computed independently and without pose uncertainty
     vector<VectorXf> xf;    //updated EKF means
     vector<MatrixXf> Pf;    //updated EKF covariances
 
@@ -598,7 +602,7 @@ void compute_jacobians(
     for (i=0; i<idf.size(); i++) {
         dx = xf[i](0) - xv(0);
         dy = xf[i](1) - xv(1);
-        d2 = pow(dx,2) + pow(dy,2);
+        d2 = pow(dx,2) + pow(dy, 2);
         d  = sqrt(d2);
 
         VectorXf zp_vec(2);
@@ -894,7 +898,8 @@ Particle::Particle()
 	_da = NULL;
 }
 
-Particle::Particle(float &w, VectorXf &xv, MatrixXf &Pv, vector<VectorXf> &xf, vector<MatrixXf> &Pf, float* da)
+Particle::Particle(float &w, VectorXf &xv, MatrixXf &Pv,
+                   vector<VectorXf> &xf, vector<MatrixXf> &Pf, float* da)
 {
     _w  = w;
 	_xv = xv;
@@ -1333,7 +1338,8 @@ int SLAM_Conf::parse(void)
 
 
     // waypoint proximity
-    AT_WAYPOINT         = 1.0;                      // metres, distance from current waypoint at which to switch to next waypoint
+    AT_WAYPOINT         = 1.0;                      // metres, distance from current
+                                                    // waypoint at which to switch to next waypoint
     NUMBER_LOOPS        = 2;                        // number of loops through the waypoint list
 
     // resampling
@@ -1349,7 +1355,8 @@ int SLAM_Conf::parse(void)
     SWITCH_HEADING_KNOWN    = 1;
     SWITCH_RESAMPLE         = 1;
     SWITCH_PROFILE          = 1;
-    SWITCH_SEED_RANDOM      = 0;    // if not 0, seed the randn() with its value at beginning of simulation (for repeatability)
+    SWITCH_SEED_RANDOM      = 0;    // if not 0, seed the randn() with its value at beginning //
+                                    //  of simulation (for repeatability)
 
     SWITCH_ASSOCIATION_KNOWN= 0;
     SWITCH_BATCH_UPDATE     = 1;

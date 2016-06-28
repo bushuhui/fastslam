@@ -49,13 +49,46 @@ void SlamPlot::keyPressEvent(QKeyEvent *event)
 
     key  = event->key();
 
-    //key2 = key & 0xFFFFFF;
-    //printf("key = %d %x (%d) \n", key, key, key2);
+    key2 = key & 0xFFFFFF;
+    printf("key = %d %x (%d) \n", key, key, key2);
 
     if( key == Qt::Key_Up )     cmd = 1;
     if( key == Qt::Key_Down )   cmd = 2;
     if( key == Qt::Key_Left )   cmd = 3;
     if( key == Qt::Key_Right )  cmd = 4;
+
+
+    QCPRange    rng_x, rng_y;
+    rng_x = customPlot->xAxis->range();
+    rng_y = customPlot->yAxis->range();
+
+    // Pan
+    if( key == Qt::Key_A ) {
+        customPlot->xAxis->moveRange(-rng_x.size()/8.0);
+    }
+
+    if( key == Qt::Key_D ) {
+        customPlot->xAxis->moveRange(rng_x.size()/8.0);
+    }
+
+    if( key == Qt::Key_W ) {
+        customPlot->yAxis->moveRange(rng_y.size()/8.0);
+    }
+
+    if( key == Qt::Key_S ) {
+        customPlot->yAxis->moveRange(-rng_y.size()/8.0);
+    }
+
+    // zoom
+    if( key == Qt::Key_Comma) {
+        customPlot->xAxis->scaleRange(0.8, rng_x.center());
+        customPlot->yAxis->scaleRange(0.8, rng_y.center());
+    }
+
+    if( key == Qt::Key_Period) {
+        customPlot->xAxis->scaleRange(1.25, rng_x.center());
+        customPlot->yAxis->scaleRange(1.25, rng_y.center());
+    }
 
     if( cmd > 0 ) emit commandSend(cmd);
 }
@@ -159,6 +192,7 @@ void SlamPlot::canvasReplot(void)
 {
     plot();    
 }
+
 void SlamPlot::plotBegin(void)
 {
     muxData->lock();
@@ -650,6 +684,12 @@ void SlamPlot::showMessage(QString &msg)
     statusBar()->showMessage(_msg);
 }
 
+void SlamPlot::setScreenShot_fname(std::string &fnBase)
+{
+    fnScreenShot_base = fnBase;
+}
+
+
 void SlamPlot::clear(void)
 {
     muxData->lock();
@@ -674,7 +714,15 @@ void SlamPlot::clear(void)
 
 void SlamPlot::plot(void)
 {
+    static int  idx = 0;
+    QString     fnOut;
+
     customPlot->replot();
+
+    if( fnScreenShot_base.size() > 0 ) {
+        fnOut.sprintf("%s_%05d.png", fnScreenShot_base.c_str(), idx++);
+        customPlot->savePng(fnOut);
+    }
 }
 
 void SlamPlot::drawCar(int idx)
@@ -689,7 +737,7 @@ void SlamPlot::drawCar(int idx)
         y = parmCarModel[1];
         t = parmCarModel[2];
         s = parmCarModel[3];
-    } else if ( idx == 1 ) {
+    } else {
         x = parmCarEst[0];
         y = parmCarEst[1];
         t = parmCarEst[2];

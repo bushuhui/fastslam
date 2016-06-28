@@ -1,20 +1,9 @@
-# Compiled Object files
-*.slo
-*.lo
+*~
 *.o
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-
-# exe
 *.e
-
-# QT Creator file
-*.user
-moc_*
+*.so
+*.a
+*user
+*user.*
+*.qmdb
+*.qmake

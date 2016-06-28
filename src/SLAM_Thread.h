@@ -2,6 +2,7 @@
 #define SLAM_THREAD_H
 
 #include <stdio.h>
+#include <stdint.h>
 #include <string>
 #include <QtGui>
 
@@ -42,7 +43,7 @@ protected:
     int         isAlive;                // is finished?
 
     int         commandID;              // command id
-    u_int64_t   commandTime;            // command receive time-stamp
+    uint64_t    commandTime;            // command receive time-stamp
 
     RunMode     runMode;                // running mode
 

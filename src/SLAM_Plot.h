@@ -4,7 +4,6 @@
 #include <QtCore>
 #include <QtGui>
 #include <QMainWindow>
-#include <QStatusBar>
 #include <QTimer>
 
 #include <Eigen/Dense>
@@ -45,6 +44,7 @@ public:
     void clear(void);
     void plot(void);
 
+    void setScreenShot_fname(std::string &fnBase);
 
     void showMessage(QString &msg);
 
@@ -104,6 +104,8 @@ private:
     QVector<QCPCurve*>  arrCovLines;                    // cov ellipse graph
 
     QString             msgString1, msgString2;
+
+    std::string         fnScreenShot_base;
 
     QMutex              *muxData;
 

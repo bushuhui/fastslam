@@ -58,12 +58,14 @@ int main(int argc, char *argv[])
     SLAM_Thread             *slam_thread;
 
     string                  mode, method;
+    string                  fn_screenshot;
+
+    int                     ww, wh;
 
     int                     slam_method = 1;
     SLAM_Thread::RunMode    slam_runmode = SLAM_Thread::SLAM_WAYPOINT;
-    string                  map_fname = "example_webmap.mat";
+    string                  map_fname = "data/example_webmap.mat";
     string                  conf_fname;
-
 
     SLAM_Conf               conf;
     StringArray             arrFN;
@@ -83,6 +85,7 @@ int main(int argc, char *argv[])
         }
     }
 
+    printf("map: %s\n", map_fname.c_str());
     arrFN = path_splitext(map_fname);
     conf_fname = arrFN[0] + ".ini";
 
@@ -110,6 +113,16 @@ int main(int argc, char *argv[])
     if( method == "FAST2" ) slam_method = 2;
     if( method == "EKF1" )  slam_method = 3;
 
+    // get screenshot filename
+    fn_screenshot = "";
+    conf.s("fn_screenshot", fn_screenshot);
+
+    // get window size
+    ww = 950;
+    wh = 768;
+    conf.i("ww", ww);
+    conf.i("wh", wh);
+
     // print parameters
     conf.print();
 
@@ -120,7 +133,8 @@ int main(int argc, char *argv[])
     SlamPlot w;
     g_plot = &w;
     w.show();
-    w.setGeometry(10, 10, 950, 768);
+    w.setGeometry(10, 10, ww, wh);
+    w.setScreenShot_fname(fn_screenshot);
     w.plot();
 
     // create SLAM thread

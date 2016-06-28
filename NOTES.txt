@@ -1,0 +1,11 @@
+Eigen docs:
+    http://eigen.tuxfamily.org/dox/
+
+Eigen's unsupported modules 
+    http://eigen.tuxfamily.org/dox-devel/unsupported/index.html
+    
+https://github.com/iNiKe/eigen
+
+
+Generate video:
+    ./fastslam.e -fn_screenshot ./screenshot/img -ww 400 -wh 300 -SWITCH_HEADING_KNOWN 0 
