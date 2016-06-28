@@ -112,9 +112,9 @@ void data_associate_known(vector<VectorXf> &z, vector<int> &idz, VectorXf &table
     idf.clear();
     vector<int> idn;
 
-    unsigned i,ii,r;
+    unsigned long ii;
 
-    for (i =0; i< idz.size(); i++) {
+    for (unsigned long i =0; i< idz.size(); i++) {
         ii = idz[i];
         VectorXf z_i;
         if (table(ii) ==-1) { //new feature
@@ -130,7 +130,7 @@ void data_associate_known(vector<VectorXf> &z, vector<int> &idz, VectorXf &table
     }
 
     assert(idn.size() == zn.size());
-    for (int i=0; i<idn.size(); i++) {
+    for (unsigned long  i=0; i<idn.size(); i++) {
         table(idn[i]) = Nf+i;
     }
 }
@@ -143,7 +143,7 @@ void feature_update(Particle &particle, vector<VectorXf> &z, vector<int> &idf, M
     vector<VectorXf> xf;    //updated EKF means
     vector<MatrixXf> Pf;    //updated EKF covariances
 
-	for (unsigned i=0; i<idf.size(); i++) {
+	for (unsigned long i=0; i<idf.size(); i++) {
 		xf.push_back(particle.xf()[idf[i]]); //means
 		Pf.push_back(particle.Pf()[idf[i]]); //covariances
 	}	
@@ -156,7 +156,7 @@ void feature_update(Particle &particle, vector<VectorXf> &z, vector<int> &idf, M
 	compute_jacobians(particle,idf,R,zp,&Hv,&Hf,&Sf);
 
 	vector<VectorXf> v; //difference btw two measurements (used to update mean)
-	for (int i=0; i<z.size(); i++) {
+	for (unsigned long i=0; i<z.size(); i++) {
 		VectorXf measure_diff = z[i] - zp[i];
 		measure_diff[1] = pi_to_pi(measure_diff[1]);
 		v.push_back(measure_diff);
@@ -167,7 +167,7 @@ void feature_update(Particle &particle, vector<VectorXf> &z, vector<int> &idf, M
     MatrixXf Pfi;
     VectorXf xfi; 
 
-	for (int i=0; i<idf.size(); i++) {
+	for (unsigned long i=0; i<idf.size(); i++) {
 		vi = v[i];
 		Hfi = Hf[i];
 		Pfi = Pf[i];
@@ -177,7 +177,7 @@ void feature_update(Particle &particle, vector<VectorXf> &z, vector<int> &idf, M
 		Pf[i] = Pfi;
 	}
 
-	for (int i=0; i<idf.size(); i++) {
+	for (unsigned long i=0; i<idf.size(); i++) {
 		particle.setXfi(idf[i],xf[i]);
 		particle.setPfi(idf[i],Pf[i]);
 	}
@@ -217,7 +217,7 @@ void get_visible_landmarks(VectorXf &x, MatrixXf &lm, vector<int> &idf, float rm
 
 	vector<int> idf_backup(idf);
 	idf.clear();
-	for(int i=0; i<ii.size(); i++) {
+	for(unsigned long i=0; i<ii.size(); i++) {
 		idf.push_back(idf_backup[ii[i]]);
 	}
 }
@@ -251,7 +251,7 @@ vector<int> find2(vector<float> &dx, vector<float> &dy, float phi, float rmax)
 {
 	vector<int> index;
 	//incremental tests for bounding semi-circle
-	for (int j=0; j<dx.size(); j++) {
+	for (unsigned long j=0; j<dx.size(); j++) {
 		if ((abs(dx[j]) < rmax) && (abs(dy[j]) < rmax)
 				&& ((dx[j]* cos(phi) + dy[j]* sin(phi)) > 0.0)
 				&& (((float)pow(dx[j],2) + (float)pow(dy[j],2)) < (float)pow(rmax,2))){
@@ -332,8 +332,8 @@ MatrixXf line_plot_conversion(MatrixXf &lnes)
 		p(0,j+1) = lnes(2,k);
 		p(1,j+1) = lnes(3,k);
 		if (j+2 <len) {
-			p(0,j+2) = NULL;
-			p(1,j+2) = NULL;
+			p(0,j+2) = 0;
+			p(1,j+2) = 0;
 		}
 	}
 	return p;
@@ -347,7 +347,7 @@ MatrixXf make_laser_lines(vector<VectorXf> &rb, VectorXf &xv)
         return MatrixXf(0,0);
     }
 
-    int len = rb.size();
+    unsigned long len = rb.size();
     MatrixXf lnes(4,len);
 
     MatrixXf globalMat(2,rb.size());
@@ -458,12 +458,12 @@ MatrixXf nRandMat::rand(int m, int n)
 void add_observation_noise(vector<VectorXf> &z, MatrixXf &R, int addnoise)
 {
     if (addnoise == 1) {
-        int len = z.size();
+        unsigned long len = z.size();
         if (len > 0) {
             MatrixXf randM1 = nRandMat::randn(1,len);
             MatrixXf randM2 = nRandMat::randn(1,len);
 
-            for (int c=0; c<len; c++) {
+            for (unsigned long c=0; c<len; c++) {
                 z[c][0] = z[c][0] + randM1(0,c)*sqrt(R(0,0));
                 z[c][1] = z[c][1] + randM2(0,c)*sqrt(R(1,1));
             }
@@ -628,8 +628,8 @@ void compute_jacobians(
 
 void resample_particles(vector<Particle> &particles, int Nmin, int doresample) 
 {
-    int             i;
-    unsigned int    N = particles.size();
+    unsigned long   i;
+    unsigned long   N = particles.size();
     VectorXf        w(N);
 
     for (i=0; i<N; i++) {
@@ -661,7 +661,7 @@ void resample_particles(vector<Particle> &particles, int Nmin, int doresample)
     }
 }
 
-void stratified_random(int N, vector<float> &di)
+void stratified_random(unsigned long N, vector<float> &di)
 { 
     float k = 1.0/(float)N;
    
@@ -780,10 +780,10 @@ void read_slam_input_file(const string s, MatrixXf *lm, MatrixXf *wp)
     ifstream in(s.c_str());
 
     int lineno = 0;
-    int lm_rows =0;
+    unsigned long lm_rows =0;
     int lm_cols =0;
-    int wp_rows =0;
-    int wp_cols =0;
+    unsigned long  wp_rows =0;
+    unsigned long  wp_cols =0;
 
     while(in) {
         lineno++;
@@ -832,7 +832,7 @@ void read_slam_input_file(const string s, MatrixXf *lm, MatrixXf *wp)
                     exit(EXIT_FAILURE);
                 }
 
-                for (unsigned r=0; r< lm_rows; r++) {
+                for (unsigned long r=0; r< lm_rows; r++) {
                     (*lm)(r,c) = strtof(tokens[r].c_str(),NULL);
                 }
             }
@@ -847,7 +847,7 @@ void read_slam_input_file(const string s, MatrixXf *lm, MatrixXf *wp)
             wp_rows = strtof(tokens[1].c_str(),NULL);
             wp_cols = strtof(tokens[2].c_str(),NULL);
             wp->resize(wp_rows, wp_cols);
-            for (int c =0; c<wp_cols; c++) {
+            for (unsigned long c =0; c<wp_cols; c++) {
                 lineno++;
                 if (!in) {
                     std::cerr<<"EOF after reading" << std::endl;
@@ -866,7 +866,7 @@ void read_slam_input_file(const string s, MatrixXf *lm, MatrixXf *wp)
                     exit(EXIT_FAILURE);
                 }
 
-                for (int r=0; r< lm_rows; r++) {
+                for (unsigned long r=0; r< lm_rows; r++) {
                     (*wp)(r,c) = strtof(tokens[r].c_str(),NULL);
                 }
             }
@@ -960,7 +960,7 @@ void Particle::setXf(vector<VectorXf> &xf)
 	_xf = xf;
 }
 
-void Particle::setXfi(int i, VectorXf &vec) 
+void Particle::setXfi(unsigned long i, VectorXf &vec) 
 {
 	if (i >= _xf.size()){
 		_xf.resize(i+1);
@@ -973,7 +973,7 @@ void Particle::setPf(vector<MatrixXf> &Pf)
 	_Pf = Pf;
 }
 
-void Particle::setPfi(int i, MatrixXf &m) 
+void Particle::setPfi(unsigned long i, MatrixXf &m) 
 {
 	if(i >= _Pf.size()) {
 		_Pf.resize(i+1);
@@ -1096,9 +1096,9 @@ void ekf_data_associate(VectorXf &x, MatrixXf &P, vector<VectorXf> &z, MatrixXf 
                         float gate1, float gate2,
                         vector<VectorXf> &zf, vector<int> &idf, vector<VectorXf> &zn)
 {
-    int     Nxv, Nf;
-    int     i, j;
-    int     jbest;
+    unsigned long Nxv, Nf;
+    unsigned long i, j;
+    long jbest;
     float   nis, nd;
     float   nbest, outer;
 
@@ -1284,7 +1284,7 @@ void ekf_add_one_z(VectorXf &x, MatrixXf &P,
 void ekf_augment(VectorXf &x, MatrixXf &P,
                  vector<VectorXf> &zn, MatrixXf &Re)
 {
-    for(int i=0; i<zn.size(); i++)
+    for(unsigned long i=0; i<zn.size(); i++)
         ekf_add_one_z(x, P, zn[i], Re);
 }
 
@@ -1396,4 +1396,6 @@ int SLAM_Conf::parse(void)
     i("SWITCH_ASSOCIATION_KNOWN",   SWITCH_ASSOCIATION_KNOWN);
     i("SWITCH_BATCH_UPDATE",        SWITCH_BATCH_UPDATE);
     i("SWITCH_USE_IEKF",            SWITCH_USE_IEKF);
+
+	return 0;
 }

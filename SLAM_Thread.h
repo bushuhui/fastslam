@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string>
 #include <QtGui>
+#include <sys/types.h>
 
 class SLAM_Thread : public QThread
 {
@@ -42,7 +43,7 @@ protected:
     int         isAlive;                // is finished?
 
     int         commandID;              // command id
-    u_int64_t   commandTime;            // command receive time-stamp
+    uint64_t   commandTime;            // command receive time-stamp
 
     RunMode     runMode;                // running mode
 

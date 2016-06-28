@@ -44,7 +44,7 @@ SlamPlot::~SlamPlot()
 
 void SlamPlot::keyPressEvent(QKeyEvent *event)
 {
-    int key, key2;
+    int key;
     int cmd = -1;
 
     key  = event->key();
@@ -689,7 +689,7 @@ void SlamPlot::drawCar(int idx)
         y = parmCarModel[1];
         t = parmCarModel[2];
         s = parmCarModel[3];
-    } else if ( idx == 1 ) {
+    } else {
         x = parmCarEst[0];
         y = parmCarEst[1];
         t = parmCarEst[2];

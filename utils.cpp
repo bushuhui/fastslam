@@ -360,7 +360,7 @@ static inline void printStackTrace( FILE *out = stderr, unsigned int max_frames 
     char    s_cmd[1024];
     char    s_fileline[1024];
 
-    unsigned int    i, j;
+    unsigned int    i;
 
     // retrieve current stack addresses
     unsigned int addrlen = backtrace( addrlist, sizeof( addrlist ) / sizeof( void* ));
@@ -537,7 +537,7 @@ void abortHandler( int signum )
 }
 
 
-int dbg_stacktrace_setup(void)
+void dbg_stacktrace_setup(void)
 {
     signal( SIGABRT, abortHandler );
     signal( SIGSEGV, abortHandler );
@@ -638,7 +638,7 @@ string trim(const string &s)
 
 string str_tolower(string &s)
 {
-    for(int i=0; i < s.size(); i++) {
+    for(unsigned long i=0; i < s.size(); i++) {
         s[i] = tolower(s[i]);
     }
 
@@ -647,7 +647,7 @@ string str_tolower(string &s)
 
 string str_toupper(string &s)
 {
-    for(int i=0; i < s.size(); i++) {
+    for(unsigned long i=0; i < s.size(); i++) {
         s[i] = toupper(s[i]);
     }
 
@@ -807,6 +807,8 @@ int path_lsdir(const string &dir_name, StringArray &dl)
 
     // sort all file name
     std::sort(dl.begin(), dl.end());
+
+	return 0;
 }
 
 int path_isdir(const std::string &p)
@@ -960,7 +962,7 @@ std::string path_join(const std::string &p1, const std::string &p2, const std::s
 
 std::string path_join(const StringArray &p)
 {
-    int     i, l;
+    unsigned long      i, l;
     string  p_all;
 
     p_all = "";
@@ -1363,7 +1365,7 @@ char *CVariant::to_s(char *buf)
 
     case VT_POINTER:
         // FIXME: change to u64
-        sprintf(buf, "%llx", (uint64_t) d.pVal);
+        sprintf(buf, "%lx", (uint64_t) d.pVal);
         break;
     }
 
@@ -2224,7 +2226,7 @@ int  CParamArray::to_stream(int *len, uint8_t *buf)
 int  CParamArray::from_stream(int len, uint8_t *buf)
 {
     int         n, i;
-    int         l1, l2, l_item, p;
+    int         l1, l2, p;
     char        *str_name;
     int         pi;
     int         *arr_len;
@@ -2405,7 +2407,7 @@ int CParamArray::_init(void)
 
 int CParamArray::_release(int s)
 {
-    int     i, l;
+    unsigned long     i, l;
 
     // free all variant objects
     l = na.size();
@@ -2461,7 +2463,7 @@ int CArgs::save(string fname)
 {
     string      fn;
     FILE        *fp;
-    int         i;
+    unsigned long i;
     tm          *now;
     time_t      t;
     char        str_time[200];
