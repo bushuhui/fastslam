@@ -34,9 +34,9 @@ examples:
 
 `./fastslam.e -method FAST1 -mode interactive` (FastSLAM 1, user interactive)
 
-`./fastslam.e -method FAST2 -mode waypoints -m example_webmap.mat` (FastSLAM 2, following waypoints, map is "example_webmap.mat")
+`./fastslam.e -method FAST2 -mode waypoints -m data/example_webmap.mat` (FastSLAM 2, following waypoints, map is "example_webmap.mat")
 
-`./fastslam.e -method EKF1 -mode waypoints -m example_loop1.mat` (EKF SLAM, following waypoints, map is "example_loop1.mat")
+`./fastslam.e -method EKF1 -mode waypoints -m data/example_loop1.mat` (EKF SLAM, following waypoints, map is "example_loop1.mat")
 
 
 
