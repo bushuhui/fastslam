@@ -50,8 +50,8 @@ Only test on Ubuntu 10.04 64-bit.
 
 
 ## Screenshot:
--![alt text](https://raw.githubusercontent.com/bushuhui/fastslam/master/figures/Screenshot-2D-SLAM_1.png "Screenshot 1")
--![alt text](https://raw.githubusercontent.com/bushuhui/fastslam/master/figures/Screenshot-2D-SLAM_2.png "Screenshot 2")
+-![Screenshot 1](figures/Screenshot-2D-SLAM_1.png "Screenshot 1")
+-![Screenshot 2](figures/Screenshot-2D-SLAM_2.png "Screenshot 2")
 
 
 ## Project homepage:
