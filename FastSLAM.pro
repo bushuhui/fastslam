@@ -3,6 +3,9 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG += qt
 
+UI_DIR       = ./build
+MOC_DIR      = ./build
+OBJECTS_DIR  = ./build
 
 HEADERS += \
     ./src/fastslam_core.h \
@@ -23,10 +26,9 @@ SOURCES += \
     ./src/fastslam_2.cpp \
     ./src/ekfslam_1.cpp \
     ./src/main.cpp \
-    ./src/test.cpp \
     ./src/utils.cpp
 
-OTHER_FILES = Makefile README.md NOTES.txt
+OTHER_FILES = README.md NOTES.txt
 
 INCLUDEPATH +=  ./libs/eigen3
 

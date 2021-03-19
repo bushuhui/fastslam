@@ -7,3 +7,6 @@
 *user.*
 *.qmake
 moc_*
+Makefile
+FastSLAM
+build

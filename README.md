@@ -17,7 +17,7 @@ The source is based on yglee source code (https://github.com/yglee/FastSLAM), an
 
 ## Usage:
 ```
-./fastslam.e
+./FastSLAM
     -m                  [s] input map file name
     -mode               [s] runing mode
         waypoints   : following given waypoints
@@ -32,11 +32,11 @@ The source is based on yglee source code (https://github.com/yglee/FastSLAM), an
 
 examples:
 
-`./fastslam.e -method FAST1 -mode interactive` (FastSLAM 1, user interactive)
+`./FastSLAM -method FAST1 -mode interactive` (FastSLAM 1, user interactive)
 
-`./fastslam.e -method FAST2 -mode waypoints -m data/example_webmap.mat` (FastSLAM 2, following waypoints, map is "example_webmap.mat")
+`./FastSLAM -method FAST2 -mode waypoints -m data/example_webmap.mat` (FastSLAM 2, following waypoints, map is "example_webmap.mat")
 
-`./fastslam.e -method EKF1 -mode waypoints -m data/example_loop1.mat` (EKF SLAM, following waypoints, map is "example_loop1.mat")
+`./FastSLAM -method EKF1 -mode waypoints -m data/example_loop1.mat` (EKF SLAM, following waypoints, map is "example_loop1.mat")
 
 
 
