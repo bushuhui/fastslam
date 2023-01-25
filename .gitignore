@@ -10,3 +10,4 @@ moc_*
 Makefile
 FastSLAM
 build
+.qmake.stash

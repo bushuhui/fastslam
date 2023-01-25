@@ -4,6 +4,7 @@
 #include <QScreen>
 #include <QMessageBox>
 #include <QMetaEnum>
+#include <QStatusBar>
 
 
 #include "SLAM_Plot.h"

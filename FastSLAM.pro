@@ -1,7 +1,8 @@
 TEMPLATE = app
-CONFIG += console
-CONFIG -= app_bundle
 CONFIG += qt
+
+QT       += core gui network widgets printsupport
+
 
 UI_DIR       = ./build
 MOC_DIR      = ./build

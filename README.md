@@ -4,16 +4,21 @@ This program is a pure C++ implementation of FastSLAM 1 and 2. It also integrate
 
 The source is based on yglee source code (https://github.com/yglee/FastSLAM), and orignal FastSLAM (http://www-personal.acfr.usyd.edu.au/tbailey/software/slam_simulations.htm) . We add Qt GUI and also fixed some bugs from yglee's implementation. 
 
+![Screenshot 1](figures/Screenshot-2D-SLAM_1.png "Screenshot 1")
+
 
 ## Requirements:
-* Eigen3 ( sudo apt-get install libeigen3-dev)
-* Qt4 (sudo apt-get install libqt4-core libqt4-dev)
+* Eigen3 ( included)
+* Qt4 (`sudo apt-get install qt4-default libqt4-dev libqt4-dev-bin`)
 * QCustomPlot (included, webpage: http://www.workslikeclockwork.com/) 
 
 
 ## Compile:
-`make`
 
+```
+qmake FastSLAM.pro
+make
+```
 
 ## Usage:
 ```
