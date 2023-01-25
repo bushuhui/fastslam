@@ -46,7 +46,7 @@ examples:
 
 
 ## Plateform:
-Only test on Ubuntu 10.04 64-bit. 
+Test on Ubuntu 18.04 64-bit. 
 
 
 ## Issues:
